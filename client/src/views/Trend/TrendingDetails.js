@@ -2,16 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { fetchTrendingTweets, fetchTrendingTweetsByFav } from '../../api/tweets'
 import { fetchMostMentionedUser, fetchTrendingUsers } from '../../api/userApi'
 import { fetchTrendingHashtags } from '../../api/hashtagApi'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCardFooter,
-  CSpinner,
-  CCol,
-  CRow,
-  CCardGroup,
-} from '@coreui/react'
+import { CCard, CCardBody, CCardHeader, CSpinner, CCol, CRow } from '@coreui/react'
 
 const TrendingPage = () => {
   const [trendingTweets, setTrendingTweets] = useState([])

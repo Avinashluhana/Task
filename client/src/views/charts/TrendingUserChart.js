@@ -56,13 +56,13 @@ const TrendingUserChart = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                {/* Customize the bars' color and size */}
+
                 <Bar
                   dataKey="mentions"
-                  fill="#41B883" // Green color for bars
+                  fill="#41B883"
                   barSize={50}
-                  label={{ position: 'top', fontSize: 14, fill: '#fff' }} // Labels above the bars
-                  animationDuration={1000} // Smooth animation
+                  label={{ position: 'top', fontSize: 14, fill: '#fff' }}
+                  animationDuration={1000}
                 />
               </BarChart>
             </ResponsiveContainer>

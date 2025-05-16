@@ -54,7 +54,6 @@ const getTweetsByUser = async (req, res) => {
 };
 
 const getRetweets = async (req, res) => {
-  //const { screenName } = req.params;
 
   // Cypher query to fetch retweets with more than 0 retweets, ordered by most retweets
   const query = `
@@ -89,7 +88,6 @@ const getRetweets = async (req, res) => {
 };
 
 const getMentions = async (req, res) => {
-  // const { screenName } = req.params;
 
   const query = `
       MATCH (u:User {screen_name: $screenName})<-[:MENTIONS]-(t:Tweet)

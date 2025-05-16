@@ -1,29 +1,3 @@
-// import React from 'react'
-// import { CCard, CCardBody, CCardHeader, CImage } from '@coreui/react'
-
-// const UserProfileCard = ({ user }) => {
-//   return (
-//     <CCard className="shadow-lg rounded">
-//       <CCardHeader className="bg-primary text-white">
-//         <h4>{user.name}</h4>
-//         <p>@{user.screen_name}</p>
-//       </CCardHeader>
-//       <CCardBody className="text-muted">
-//         <CImage
-//           src={user.profile_image_url}
-//           alt="profile"
-//           className="img-fluid rounded-circle mb-3"
-//           style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-//         />
-//         <div>
-//           <strong>Location:</strong> {user.location}
-//         </div>
-//       </CCardBody>
-//     </CCard>
-//   )
-// }
-
-// export default UserProfileCard
 import React from 'react'
 import { CCard, CCardBody, CCardHeader, CImage } from '@coreui/react'
 
