@@ -64,9 +64,9 @@ export const fetchTotalRetweets = async () => {
   }
 }
 // Fetch Tweet Hierarchy
-export const fetchTweetHierarchy = async () => {
+export const fetchTweetHierarchy = async (tweetId) => {
   try {
-    const response = await axios.get(`${API_URL}/tweets/hira`)
+    const response = await axios.get(`${API_URL}/${tweetId}/hira`)
     return response.data
   } catch (error) {
     console.error('Error fetching tweet hierarchy:', error)
@@ -75,9 +75,9 @@ export const fetchTweetHierarchy = async () => {
 }
 
 // Fetch Tweet Details by tweetId
-export const fetchTweetDetails = async () => {
+export const fetchTweetDetails = async (tweetId) => {
   try {
-    const response = await axios.get(`${API_URL}/tweets/details`)
+    const response = await axios.get(`${API_URL}/${tweetId}/details`)
     return response.data
   } catch (error) {
     console.error('Error fetching tweet details:', error)

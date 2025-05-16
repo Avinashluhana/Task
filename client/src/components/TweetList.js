@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchUserTweets, fetchTweetDetails, fetchTweetHierarchy } from '../api/tweets' // Import API functions
+import { fetchTweetDetails, fetchTweetHierarchy } from '../api/tweets' // Import API functions
 import { CCard, CCardBody, CCardHeader, CCardFooter, CSpinner, CRow, CCol } from '@coreui/react'
 import { FaRetweet, FaRegHeart, FaLink, FaHashtag } from 'react-icons/fa'
 
@@ -10,12 +10,12 @@ const TweetList = () => {
   useEffect(() => {
     const fetchTweets = async () => {
       try {
-        const tweetData = await fetchTweetHierarchy('1371188670472941570')
+        const tweetData = await fetchTweetHierarchy('1371188670472941570') // Replace with dynamic tweet ID or fetch data as needed
 
         // Fetch tweet details for each tweet
         const detailedTweets = await Promise.all(
           tweetData.map(async (tweet) => {
-            const tweetDetailsResponse = await fetchTweetDetails('1371188670472941570')
+            const tweetDetailsResponse = await fetchTweetDetails('1371188670472941570') // Replace with dynamic tweet ID or fetch data as needed
             return { ...tweet, details: tweetDetailsResponse }
           }),
         )
