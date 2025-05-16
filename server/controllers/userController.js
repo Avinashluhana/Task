@@ -46,13 +46,12 @@ const getAllUsers = async (req, res) => {
 
     // If the error is related to the database (Neo4j)
     if (error.name === "Neo4jError") {
-      res;
       res
         .status(500)
         .json({ error: "Internal server error while fetching user data." });
     }
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -85,7 +84,7 @@ const getUserProfile = async (req, res) => {
     console.error("Error fetching user profile:", error);
     res.status(500).json({ error: "Error fetching user profile" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -126,7 +125,7 @@ const getUserMentions = async (req, res) => {
     console.error("Error fetching mentions:", error);
     res.status(500).json({ error: "Error fetching mentions" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -164,7 +163,7 @@ const getUserFollowRelations = async (req, res) => {
 
     res.status(500).json({ error: "Error fetching followers and following" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 // Get a user's tweet sources (mobile, web, etc.)
@@ -194,7 +193,7 @@ const getUserSources = async (req, res) => {
     console.error("Error fetching tweet sources:", error);
     res.status(500).json({ error: "Error fetching tweet sources" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -229,7 +228,7 @@ const getUserTweetRelations = async (req, res) => {
     console.error("Error fetching user tweet relations:", error);
     res.status(500).json({ error: "Error fetching tweet relations" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -270,7 +269,7 @@ const getUserStats = async (req, res) => {
     console.error("Error fetching user stats:", error);
     res.status(500).json({ error: "Error fetching user stats" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -302,7 +301,7 @@ const getTrendingHashtags = async (req, res) => {
     console.error("Error fetching trending hashtags:", error);
     res.status(500).json({ error: "Error fetching trending hashtags" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -331,7 +330,7 @@ const getTrendingUsersByFollowers = async (req, res) => {
       .status(500)
       .json({ error: "Error fetching trending users based on followers" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -366,7 +365,7 @@ const getUserFollowStats = async (req, res) => {
     console.error("Error fetching user details:", error);
     res.status(500).json({ error: "Internal server error" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -397,7 +396,7 @@ const getMostMentionedUsers = async (req, res) => {
     console.error("Error fetching most mentioned users:", error);
     res.status(500).json({ error: "Error fetching most mentioned users" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 

@@ -1,5 +1,4 @@
 const driver = require("../config/db");
-const screenName = "neo4j";
 const getAllTweets = async (req, res) => {
   const query = `MATCH (t:Tweet) RETURN t LIMIT 50`;
 
@@ -17,7 +16,7 @@ const getAllTweets = async (req, res) => {
     console.error("Error fetching all tweets:", error);
     res.status(500).json({ error: "Error fetching all tweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -49,7 +48,7 @@ const getTweetsByUser = async (req, res) => {
     console.error("Error fetching tweets:", error);
     res.status(500).json({ error: "Error fetching tweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -82,7 +81,7 @@ const getRetweets = async (req, res) => {
     console.error("Error fetching retweets:", error);
     res.status(500).json({ error: "Error fetching retweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -106,7 +105,7 @@ const getMentions = async (req, res) => {
     console.error("Error fetching mentions:", error);
     res.status(500).json({ error: "Error fetching mentions" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 // Get all links contained in tweets
@@ -134,7 +133,7 @@ const getLinksInTweets = async (req, res) => {
     console.error("Error fetching links in tweets:", error);
     res.status(500).json({ error: "Error fetching links in tweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -177,7 +176,7 @@ const getTweetHierarchy = async (req, res) => {
     res.status(500).json({ error: "Error fetching tweet hierarchy" });
   } finally {
     // Close the Neo4j session
-    session.close();
+    await session.close();
   }
 };
 
@@ -232,7 +231,7 @@ const getTweetDetails = async (req, res) => {
     res.status(500).json({ error: "Error fetching tweet details" });
   } finally {
     // Always close the Neo4j session
-    session.close();
+    await session.close();
   }
 };
 
@@ -262,7 +261,7 @@ const getTrendingTweetsByFav = async (req, res) => {
       .status(500)
       .json({ error: "Error fetching trending tweets by favorites" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 // Controller to get tweets with more than 0 retweets
@@ -289,7 +288,7 @@ const getTweetsWithRetweets = async (req, res) => {
     console.error("Error fetching tweets with retweets:", error);
     res.status(500).json({ error: "Error fetching tweets with retweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 const getMonthlyTweets = async (req, res) => {
@@ -316,7 +315,7 @@ const getMonthlyTweets = async (req, res) => {
     console.error("Error fetching monthly tweets data:", error);
     res.status(500).json({ error: "Error fetching monthly tweets data" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -342,7 +341,7 @@ const getTotalTweets = async (req, res) => {
     console.error("Error fetching total tweets:", error);
     res.status(500).json({ error: "Error fetching total tweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 // Controller function to get the total number of retweets
@@ -368,7 +367,7 @@ const getTotalRetweets = async (req, res) => {
     console.error("Error fetching total retweets:", error);
     res.status(500).json({ error: "Error fetching total retweets" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 

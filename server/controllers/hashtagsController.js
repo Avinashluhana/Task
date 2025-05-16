@@ -21,7 +21,7 @@ const getHashtags = async (req, res) => {
     console.error("Error fetching hashtags:", error);
     res.status(500).json({ error: "Error fetching hashtags" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 // Get hashtags related to a tweet
@@ -47,7 +47,7 @@ const getTweetHashtags = async (req, res) => {
     console.error("Error fetching tweet hashtags:", error);
     res.status(500).json({ error: "Error fetching tweet hashtags" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 
@@ -74,7 +74,7 @@ const getTrendingHashtags = async (req, res) => {
     console.error("Error fetching trending hashtags:", error);
     res.status(500).json({ error: "Error fetching trending hashtags" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 // Controller function to get the total number of hashtags
@@ -100,7 +100,7 @@ const getTotalHashtags = async (req, res) => {
     console.error("Error fetching total hashtags:", error);
     res.status(500).json({ error: "Error fetching total hashtags" });
   } finally {
-    session.close();
+    await session.close();
   }
 };
 

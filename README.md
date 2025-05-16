@@ -46,6 +46,12 @@ The **Tweets Page** lists all the tweets and provides options to explore them in
 - **Node.js** installed on your machine.
 - **NPM** or **Yarn** for managing packages.
 
+## Requirements
+
+### Node.js Version
+
+This project requires **Node.js** version **>=18.0.0**.
+
 ### Running the Frontend and Backend Together
 
 1. **Clone the repository:**
@@ -53,7 +59,7 @@ The **Tweets Page** lists all the tweets and provides options to explore them in
    ```bash
    git clone https://github.com/Avinashluhana/Task.git
 
-   cd blockwall-task
+   cd Task
 
 
    ```
