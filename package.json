@@ -1,0 +1,17 @@
+{
+  "name": "blockwall-task",
+  "version": "1.0.0",
+  "main": "index.js",
+ "scripts": {
+    "start:frontend": "cd client && npm run start",  
+    "start:backend": "cd server && node server.js", 
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
