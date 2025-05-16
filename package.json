@@ -2,10 +2,14 @@
   "name": "blockwall-task",
   "version": "1.0.0",
   "main": "index.js",
- "scripts": {
-    "start:frontend": "cd client && npm run start",  
-    "start:backend": "cd server && node server.js", 
-    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
+  "scripts": {
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
+    "install-all": "npm install && npm run install:client && npm run install:server",
+    "start:frontend": "cd client && npm run start",
+    "start:backend": "cd server && node server.js",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "setup": "npm run install-all && npm start"
   },
   "keywords": [],
   "author": "",

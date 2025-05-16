@@ -54,7 +54,6 @@ const getTweetsByUser = async (req, res) => {
 };
 
 const getRetweets = async (req, res) => {
-
   // Cypher query to fetch retweets with more than 0 retweets, ordered by most retweets
   const query = `
     MATCH (u:User {screen_name: $screenName})-[:POSTED]->(t:Tweet)
@@ -88,7 +87,6 @@ const getRetweets = async (req, res) => {
 };
 
 const getMentions = async (req, res) => {
-
   const query = `
       MATCH (u:User {screen_name: $screenName})<-[:MENTIONS]-(t:Tweet)
       RETURN t.text AS tweet, t.favorites AS favorites, t.retweets AS retweets
@@ -183,57 +181,6 @@ const getTweetHierarchy = async (req, res) => {
   }
 };
 
-//   // Extract the tweetId from the request parameters
-//   const tweetId = req.params.tweetId; // Example: /tweet/:tweetId/hira
-
-//   // Define the Cypher query to fetch tweet hierarchy and replies
-//   const query = `
-//     MATCH (t:Tweet {id_str: $tweetId})
-//     OPTIONAL MATCH (t)-[:REPLY_TO]->(reply:Tweet)
-//     OPTIONAL MATCH (t)-[:CONTAINS]->(link:Link)
-//     OPTIONAL MATCH (t)-[:TAGS]->(hashtag:Hashtag)
-//     OPTIONAL MATCH (t)-[:USING]->(source:Source)
-//     RETURN t AS rootTweet,
-//            collect(reply.text) AS replyTexts,
-//            count(reply) AS replyCount,
-//            collect(link.url) AS links,
-//            collect(hashtag.name) AS hashtags,
-//            collect(source.name) AS sources
-//     ORDER BY replyCount DESC
-//     LIMIT 5
-//   `;
-
-//   // Create a session to connect to the Neo4j database
-//   const session = driver.session({ database: process.env.NEO4J_DATABASE });
-
-//   try {
-//     // Run the query in the Neo4j session
-//     const result = await session.run(query, { tweetId });
-
-//     // Extract tweets and their related information from the result
-//     const tweets = result.records.map((record) => {
-//       return {
-//         tweet: record.get("rootTweet").properties, // Root tweet properties
-//         replyTexts: record.get("replyTexts"), // Array of reply texts
-//         replyCount: record.get("replyCount"), // Count of replies
-//         links: record.get("links"), // Associated links
-//         hashtags: record.get("hashtags"), // Associated hashtags
-//         sources: record.get("sources"), // Associated sources
-//       };
-//     });
-
-//     // Return the response with the fetched data
-//     res.status(200).json(tweets);
-//   } catch (error) {
-//     // Log error if something goes wrong
-//     console.error("Error fetching tweet hierarchy:", error);
-//     res.status(500).json({ error: "Error fetching tweet hierarchy" });
-//   } finally {
-//     // Close the Neo4j session
-//     session.close();
-//   }
-// };
-
 const getTweetDetails = async (req, res) => {
   // Extract the tweetId from the request parameters
   const tweetId = req.params.tweetId;
@@ -288,6 +235,7 @@ const getTweetDetails = async (req, res) => {
     session.close();
   }
 };
+
 // Controller to get top retweeted tweets
 const getTrendingTweetsByFav = async (req, res) => {
   const query = `

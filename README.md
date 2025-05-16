@@ -54,20 +54,20 @@ The **Tweets Page** lists all the tweets and provides options to explore them in
    git clone https://github.com/Avinashluhana/Task.git
 
    cd blockwall-task
-   npm install
+
+
    ```
 
-# Install frontend dependencies
+# Install dependencies for both the frontend and backend by running the following command:
 
-cd client
-npm install
-cd ..
+    ```bash
+    npm run install-all
+    ```
 
-# Install backend dependencies
-
-cd server
-npm install
-cd ..
+    This will:
+    - Install dependencies for the **client** (frontend) in the `client/` folder
+    - Install dependencies for the **server** (backend) in the `server/` folder
+    - Install root dependencies
 
 # Run the project using concurrently to start both the frontend and backend:
 

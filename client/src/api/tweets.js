@@ -22,27 +22,7 @@ export const fetchUserTweets = async (screenName) => {
     throw error
   }
 }
-// Fetch all tweets by tweetId
-export const fetchTweetHierarchy = async (tweetId) => {
-  try {
-    const response = await axios.get(`${API_URL}/${tweetId}/hira`)
-    return response.data
-  } catch (error) {
-    console.error('Error fetching tweet hierarchy:', error)
-    throw error
-  }
-}
 
-// Fetch tweet details by tweetId
-export const fetchTweetDetails = async (tweetId) => {
-  try {
-    const response = await axios.get(`${API_URL}/${tweetId}/details`)
-    return response.data
-  } catch (error) {
-    console.error('Error fetching tweet details:', error)
-    throw error
-  }
-}
 // Fetch trending tweets
 export const fetchTrendingTweets = async () => {
   try {
@@ -80,6 +60,27 @@ export const fetchTotalRetweets = async () => {
     return response.data
   } catch (error) {
     console.error('Error fetching total retweets', error)
+    throw error
+  }
+}
+// Fetch Tweet Hierarchy
+export const fetchTweetHierarchy = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/tweets/hira`)
+    return response.data
+  } catch (error) {
+    console.error('Error fetching tweet hierarchy:', error)
+    throw error
+  }
+}
+
+// Fetch Tweet Details by tweetId
+export const fetchTweetDetails = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/tweets/details`)
+    return response.data
+  } catch (error) {
+    console.error('Error fetching tweet details:', error)
     throw error
   }
 }

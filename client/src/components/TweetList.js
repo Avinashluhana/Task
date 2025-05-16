@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { fetchUserTweets, fetchTweetDetails, fetchTweetHierarchy } from '../api/tweets' // Import API functions
 import { CCard, CCardBody, CCardHeader, CCardFooter, CSpinner, CRow, CCol } from '@coreui/react'
-import { FaRetweet, FaRegHeart, FaLink, FaHashtag } from 'react-icons/fa' // Added icons
+import { FaRetweet, FaRegHeart, FaLink, FaHashtag } from 'react-icons/fa'
 
 const TweetList = () => {
   const [tweets, setTweets] = useState([])
@@ -10,18 +10,13 @@ const TweetList = () => {
   useEffect(() => {
     const fetchTweets = async () => {
       try {
-        const response = await axios.get(
-          'http://localhost:5000/api/tweets/1371188670472941570/hira', // API endpoint for hierarchy
-        )
-        const tweetData = response.data
+        const tweetData = await fetchTweetHierarchy('1371188670472941570')
 
         // Fetch tweet details for each tweet
         const detailedTweets = await Promise.all(
           tweetData.map(async (tweet) => {
-            const tweetDetailsResponse = await axios.get(
-              `http://localhost:5000/api/tweets/1371188670472941570/details`, // API endpoint for details
-            )
-            return { ...tweet, details: tweetDetailsResponse.data }
+            const tweetDetailsResponse = await fetchTweetDetails('1371188670472941570')
+            return { ...tweet, details: tweetDetailsResponse }
           }),
         )
 
